@@ -36,7 +36,7 @@ const HabitList = () => {
   const visibleHabits = showAll ? habits : habits.slice(0, 3);
 
   return (
-    <div className="max-w-md mx-auto mt-6 px-4 pb-20">
+    <div className="max-w-md mx-auto mt-6 px-4 pb-20 gap-10 flex flex-col">
       <div className="flex flex-col gap-4 border border-slate-200 p-6 rounded-xl">
         <div className="flex flex-col gap-1">
           <p>DAILY PROGRESS</p>
