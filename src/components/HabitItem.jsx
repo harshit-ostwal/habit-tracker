@@ -18,24 +18,57 @@ const HabitItem = ({ habit }) => {
   return (
     <div className="border border-slate-200 rounded-xl p-4 bg-white flex flex-col gap-3">
       {editing ? (
-        <div className="flex flex-col gap-3">
+        <div className="flex flex-col gap-4">
+          <p className="text-xs font-bold text-slate-400 uppercase tracking-widest">
+            Edit Habit
+          </p>
+
           <input
-            className="border border-slate-300 rounded-md px-3 py-1.5 text-sm outline-none focus:ring-2 focus:ring-indigo-300"
+            className="border border-indigo-400 rounded-xl px-4 py-2.5 text-sm outline-none focus:ring-2 focus:ring-indigo-300 w-full"
             value={editData.name}
             onChange={(e) => setEditData({ ...editData, name: e.target.value })}
           />
-          <div className="flex gap-2 justify-end">
-            <button
-              onClick={() => setEditing(false)}
-              className="text-sm text-slate-500 hover:text-slate-700"
+
+          <div className="flex gap-3">
+            <select
+              className="flex-1 border border-slate-200 rounded-xl px-3 h-11 text-sm text-slate-700 outline-none focus:ring-2 focus:ring-indigo-300 bg-white"
+              value={editData.priority}
+              onChange={(e) =>
+                setEditData({ ...editData, priority: e.target.value })
+              }
             >
-              Cancel
-            </button>
+              <option value="High">High Priority</option>
+              <option value="Medium">Medium Priority</option>
+              <option value="Low">Low Priority</option>
+            </select>
+
+            <select
+              className="flex-1 border border-slate-200 rounded-xl px-3 h-11 text-sm text-slate-700 outline-none focus:ring-2 focus:ring-indigo-300 bg-white"
+              value={editData.category}
+              onChange={(e) =>
+                setEditData({ ...editData, category: e.target.value })
+              }
+            >
+              <option value="Health">Health</option>
+              <option value="Fitness">Fitness</option>
+              <option value="Mindset">Mindset</option>
+              <option value="Growth">Growth</option>
+              <option value="Finance">Finance</option>
+            </select>
+          </div>
+
+          <div className="flex gap-3">
             <button
               onClick={handleSave}
-              className="text-sm bg-indigo-600 text-white px-4 py-1.5 rounded-lg hover:bg-indigo-700"
+              className="flex-1 bg-indigo-600 text-white font-semibold py-2.5 rounded-xl hover:bg-indigo-700 transition-colors"
             >
-              Save
+              Save Changes
+            </button>
+            <button
+              onClick={() => setEditing(false)}
+              className="px-5 text-sm text-slate-500 border border-slate-200 rounded-xl hover:bg-slate-50 transition-colors"
+            >
+              Cancel
             </button>
           </div>
         </div>
